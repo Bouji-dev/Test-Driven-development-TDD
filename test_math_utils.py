@@ -1,5 +1,5 @@
 import unittest
-from math_utils import multiply, is_even
+from math_utils import multiply, is_even, divide
 
 class testMultiply(unittest.TestCase):
     def test_multiply_two_numbers(self):
@@ -23,6 +23,19 @@ class testIsEven(unittest.TestCase):
             with self.subTest(value=i):
                 with self.assertRaises(TypeError):
                     is_even(i)    
+
+class testDivide(unittest.TestCase):
+    def test_divide_two_numbers_should_return_result(self):
+        self.assertEqual(divide(10, 2), 5)
+        
+    def test_divide_by_zero_should_raise_zero_devision_error(self):    
+        with self.assertRaises(ZeroDivisionError):
+            divide(10, 0)
+    
+    def test_divide_with_non_numeric_input_should_raise_type_error(self):
+        with self.assertRaises(TypeError):
+            divide(10, "2")
+
 
 
 
